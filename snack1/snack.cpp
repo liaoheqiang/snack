@@ -2,7 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
+#include <string.h>
+#include <conio.h>
 #define MAP_WIDTH 50
 #define MAP_HEIGTH 20
 
@@ -100,11 +101,26 @@ void init()
 	DrawSnack();
 	Initfood();
 }
-
+void UpdateScreen()
+{
+	DrawSnack();
+}
 void GameLoop()
 {
+	int key = 0;
 	while(1)
-	{}
+	{
+		if(_kbhit())
+		{
+			key = _getch();
+		}
+		if(key == 'q' || key == 'Q')
+		{
+			return;
+		}
+		UpdateScreen();
+		Sleep(100);
+	}
 
 }
 
